@@ -7,6 +7,8 @@ import 'dotenv/config';
 // Routes
 import BooksRoutes from './routes/books';
 import TopicsRoutes from './routes/topics';
+import SearchRoutes from './routes/search';
+
 
 // Inicializaciones
 const app = express();
@@ -26,6 +28,8 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 app.use('/apiv1/books', BooksRoutes);
 app.use('/apiv1/topics', TopicsRoutes);
+app.use('/apiv1/search', SearchRoutes);
+
 
 // Estaticos
 app.use(express.static(path.join(__dirname, 'public')));

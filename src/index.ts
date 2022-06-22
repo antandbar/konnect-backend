@@ -1,3 +1,5 @@
+'use strict';
+
 import express, { Request, Response, NextFunction } from 'express';
 const logger = require('morgan');
 const createError = require('http-errors');
@@ -20,7 +22,7 @@ app.set('port', process.env.PORT || 3000);
 
 // Middelwares
 app.use(logger('dev'));
-'use strict';
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -53,7 +53,7 @@ UserSchema.init(
       allowNull: false,
     },
     bithDate: {
-      type: DataTypes.Date,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     userLocation: {

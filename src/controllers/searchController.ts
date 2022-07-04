@@ -1,6 +1,7 @@
 'use strict';
 
 import { Request, Response } from 'express';
+
 const SerpApi = require('google-search-results-nodejs') ;
 
 class SearchController {

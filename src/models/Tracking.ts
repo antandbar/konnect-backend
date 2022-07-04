@@ -6,6 +6,7 @@ import UserSchema from "./User"
 import ActivitySchema from "./Activity"
 import UserStatusSchema from "./UserStatus"
 
+
 export interface Tracking {
   id: number;
   userId: number;
@@ -43,18 +44,19 @@ TrackingSchema.init(
     userStatusId: {
       type: DataTypes.STRING(50),
       allowNull: false,
-      model:"activities",
+      model:"userStatuses",
       referencesKey:"id"
     },
   },
   {
     timestamps: false,
     sequelize: db,
-    modelName: 'userStatuses',
+    modelName: 'trackings',
   },
 );
 
 UserSchema.hasMany(TrackingSchema);
 ActivitySchema.hasMany(TrackingSchema);
+UserStatusSchema.hasMany(TrackingSchema)
 
 export default TrackingSchema;

@@ -10,7 +10,12 @@ import 'dotenv/config';
 import SearchEnginesRoutes from './routes/searchEngines';
 import ActivitiesRoutes from './routes/activities';
 import SearchRoutes from './routes/search';
-
+import CategoryRoutes from './routes/category';
+import CommentRoutes from './routes/comments';
+import TrakingRoutes from './routes/tracking';
+import LocationRoutes from './routes/location';
+import UserRoutes from './routes/user';
+import UserStatusRoutes from './routes/user-status';
 
 // Inicializaciones
 const app = express();
@@ -31,6 +36,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/apiv1/searchengines', SearchEnginesRoutes);
 app.use('/apiv1/activities', ActivitiesRoutes);
 app.use('/apiv1/search', SearchRoutes);
+app.use('/apiv1/category', CategoryRoutes);
+app.use('/apiv1/comments', CommentRoutes);
+app.use('/apiv1/tracking', TrakingRoutes);
+app.use('/apiv1/location', LocationRoutes);
+app.use('/apiv1/user-status', UserStatusRoutes);
+app.use('/apiv1/user', UserRoutes);
+
 
 // Prueba de rama develop
 

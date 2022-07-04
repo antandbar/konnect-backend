@@ -8,6 +8,12 @@ class LocationBo {
 
     return topics;
   }
+
+  public async postLocation(data: any): Promise<Location[]> {
+    const location: Location[] = await LocationSchema.create(data);
+
+    return location;
+  }
 }
 
 export const locationBo = new LocationBo();

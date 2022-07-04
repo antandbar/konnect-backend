@@ -20,6 +20,7 @@ LocationSchema.init(
   {
     id: {
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
     },
     location: {

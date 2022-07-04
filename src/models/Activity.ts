@@ -58,7 +58,7 @@ ActivitySchema.init(
       referencesKey:"id"
     },
     place: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(50),
     },
     maxAge: {
       type: DataTypes.INTEGER,

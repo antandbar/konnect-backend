@@ -9,7 +9,12 @@ class CategoryController {
     const activity: Category[] = await categoryBo.getCategory();
     res.status(200).json({ results: activity });
   }
-
+  
+  public async postCategory(req: Request, res: Response): Promise<void> {
+    const data = req.body;
+    const category: Category[] = await categoryBo.postCategory(data);
+    res.status(200).json({ results: category });
+  }
 }
 
 export const categoryController = new CategoryController();

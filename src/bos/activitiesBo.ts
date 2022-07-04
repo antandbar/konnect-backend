@@ -8,6 +8,12 @@ class ActivitiessBo {
 
     return topics;
   }
+
+  public async postActivities(data: Object): Promise<Activity[]> {
+    const activity: Activity[] = await ActivitySchema.create(data);
+
+    return activity;
+  }
 }
 
 export const activitiessBo = new ActivitiessBo();

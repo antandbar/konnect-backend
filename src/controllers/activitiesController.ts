@@ -10,6 +10,24 @@ class ActivitiesController {
     res.status(200).json({ results: activity });
   }
 
+  public async postctivities(req: Request, res: Response): Promise<void> {
+
+    const data = {
+      title: req.body.title,
+      description: req.body.description,
+      userLimit: req.body.userLimit,
+      activityDate: req.body.activityDate,
+      locationId: req.body.locationId,
+      place: req.body.place,
+      maxAge: req.body.maxAge,
+      minAge: req.body.minAge,
+      categoryId: req.body.categoryId
+    }
+
+    const activity: Activity[] = await activitiessBo.postActivities(data);
+    res.status(200).json({ results: activity });
+  }
+
 }
 
 export const activitiesController = new ActivitiesController();

@@ -42,7 +42,7 @@ TrackingSchema.init(
       referencesKey:"id"
     },
     userStatusId: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.INTEGER,
       allowNull: false,
       model:"userStatuses",
       referencesKey:"id"

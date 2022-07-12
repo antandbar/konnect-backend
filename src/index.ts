@@ -8,14 +8,14 @@ import 'dotenv/config';
 
 // Routes
 import SearchEnginesRoutes from './routes/searchEngines';
-import ActivitiesRoutes from './routes/activities';
+/* import ActivitiesRoutes from './routes/activities';
 import SearchRoutes from './routes/search';
 import CategoryRoutes from './routes/category';
 import CommentRoutes from './routes/comments';
 import TrakingRoutes from './routes/tracking';
 import LocationRoutes from './routes/location';
 import UserRoutes from './routes/user';
-import UserStatusRoutes from './routes/user-status';
+import UserStatusRoutes from './routes/user-status'; */
 
 // Inicializaciones
 const app = express();

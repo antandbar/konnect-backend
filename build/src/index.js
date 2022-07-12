@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -9,22 +9,28 @@ const createError = require('http-errors');
 const path_1 = __importDefault(require("path"));
 require("dotenv/config");
 // Routes
-const books_1 = __importDefault(require("./routes/books"));
-const topics_1 = __importDefault(require("./routes/topics"));
+const searchEngines_1 = __importDefault(require("./routes/searchEngines"));
 // Inicializaciones
 const app = (0, express_1.default)();
 require('./lib/connectMogoose');
-require('./lib/connectPostgresql');
+//require('./lib/connectPostgresql');
 //Configuracionesa
 app.set('port', process.env.PORT || 3000);
 // Middelwares
 app.use(logger('dev'));
-'use strict';
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 // Routes
-app.use('/apiv1/books', books_1.default);
-app.use('/apiv1/topics', topics_1.default);
+app.use('/apiv1/searchengines', searchEngines_1.default);
+/* app.use('/apiv1/activities', ActivitiesRoutes);
+app.use('/apiv1/search', SearchRoutes);
+app.use('/apiv1/category', CategoryRoutes);
+app.use('/apiv1/comments', CommentRoutes);
+app.use('/apiv1/tracking', TrakingRoutes);
+app.use('/apiv1/location', LocationRoutes);
+app.use('/apiv1/user-status', UserStatusRoutes);
+app.use('/apiv1/user', UserRoutes); */
+// Prueba de rama develop
 // Estaticos
 app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
 // Arrancar el servidor

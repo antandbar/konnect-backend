@@ -10,18 +10,18 @@ const path_1 = __importDefault(require("path"));
 require("dotenv/config");
 // Routes
 const searchEngines_1 = __importDefault(require("./routes/searchEngines"));
-/* import ActivitiesRoutes from './routes/activities';
-import SearchRoutes from './routes/search';
-import CategoryRoutes from './routes/category';
-import CommentRoutes from './routes/comments';
-import TrakingRoutes from './routes/tracking';
-import LocationRoutes from './routes/location';
-import UserRoutes from './routes/user';
-import UserStatusRoutes from './routes/user-status'; */
+const activities_1 = __importDefault(require("./routes/activities"));
+const search_1 = __importDefault(require("./routes/search"));
+const category_1 = __importDefault(require("./routes/category"));
+const comments_1 = __importDefault(require("./routes/comments"));
+const tracking_1 = __importDefault(require("./routes/tracking"));
+const location_1 = __importDefault(require("./routes/location"));
+const user_1 = __importDefault(require("./routes/user"));
+const user_status_1 = __importDefault(require("./routes/user-status"));
 // Inicializaciones
 const app = (0, express_1.default)();
 require('./lib/connectMogoose');
-//require('./lib/connectPostgresql');
+require('./lib/connectPostgresql');
 //Configuracionesa
 app.set('port', process.env.PORT || 3000);
 // Middelwares
@@ -30,14 +30,14 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 // Routes
 app.use('/apiv1/searchengines', searchEngines_1.default);
-/* app.use('/apiv1/activities', ActivitiesRoutes);
-app.use('/apiv1/search', SearchRoutes);
-app.use('/apiv1/category', CategoryRoutes);
-app.use('/apiv1/comments', CommentRoutes);
-app.use('/apiv1/tracking', TrakingRoutes);
-app.use('/apiv1/location', LocationRoutes);
-app.use('/apiv1/user-status', UserStatusRoutes);
-app.use('/apiv1/user', UserRoutes); */
+app.use('/apiv1/activities', activities_1.default);
+app.use('/apiv1/search', search_1.default);
+app.use('/apiv1/category', category_1.default);
+app.use('/apiv1/comments', comments_1.default);
+app.use('/apiv1/tracking', tracking_1.default);
+app.use('/apiv1/location', location_1.default);
+app.use('/apiv1/user-status', user_status_1.default);
+app.use('/apiv1/user', user_1.default);
 // Prueba de rama develop
 // Estaticos
 app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));

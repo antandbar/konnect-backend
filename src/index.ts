@@ -20,7 +20,7 @@ import UserStatusRoutes from './routes/user-status';
 // Inicializaciones
 const app = express();
 require('./lib/connectMogoose');
-require('./lib/connectPostgresql');
+//require('./lib/connectPostgresql');
 
 //Configuracionesa
 app.set('port', process.env.PORT || 3000);
@@ -34,14 +34,14 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use('/apiv1/searchengines', SearchEnginesRoutes);
-app.use('/apiv1/activities', ActivitiesRoutes);
+/* app.use('/apiv1/activities', ActivitiesRoutes);
 app.use('/apiv1/search', SearchRoutes);
 app.use('/apiv1/category', CategoryRoutes);
 app.use('/apiv1/comments', CommentRoutes);
 app.use('/apiv1/tracking', TrakingRoutes);
 app.use('/apiv1/location', LocationRoutes);
 app.use('/apiv1/user-status', UserStatusRoutes);
-app.use('/apiv1/user', UserRoutes);
+app.use('/apiv1/user', UserRoutes); */
 
 
 // Prueba de rama develop

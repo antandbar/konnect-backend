@@ -13,7 +13,7 @@ const Tracking_1 = __importDefault(require("./Tracking"));
 class Associations {
     relations() {
         Location_1.default.hasMany(Activity_1.default, { foreignKey: 'locationId' });
-        Category_1.default.hasMany(Activity_1.default, { foreignKey: 'activityId' });
+        Category_1.default.hasMany(Activity_1.default, { foreignKey: 'categoryId' });
         Activity_1.default.belongsTo(Location_1.default);
         Activity_1.default.belongsTo(Category_1.default);
         User_1.default.hasMany(Comment_1.default, { foreignKey: 'userId' });

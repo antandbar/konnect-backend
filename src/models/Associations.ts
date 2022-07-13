@@ -9,7 +9,7 @@ import TrackingSchema from './Tracking';
 class Associations {
   public relations() {
     LocationSchema.hasMany(ActivitySchema, { foreignKey: 'locationId' });
-    CategorySchema.hasMany(ActivitySchema, { foreignKey: 'activityId' });
+    CategorySchema.hasMany(ActivitySchema, { foreignKey: 'categoryId' });
     ActivitySchema.belongsTo(LocationSchema);
     ActivitySchema.belongsTo(CategorySchema);
 

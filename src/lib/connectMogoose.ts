@@ -13,6 +13,6 @@ mongoose.connection.once('open', () => {
   console.log('Conectado a MongoDB en la BD:', mongoose.connection.name);
 });
 
-mongoose.connect(process.env.URI, {
+mongoose.connect(process.env.NODE_ENV === 'development'?process.env.URI_LOCAL:process.env.URI, {
   useNewUrlParser: true,
 });

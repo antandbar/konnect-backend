@@ -8,7 +8,7 @@
     "clean-win": "del build",
     "build": "tsc",
     "start": "node build/src",
-    "dev": "nodemon"
+    "dev": "NODE_ENV=development nodemon"
   },
   "keywords": [],
   "author": "",

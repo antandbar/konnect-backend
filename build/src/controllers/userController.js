@@ -28,33 +28,10 @@ class UserController {
                 bithDate: req.body.bithDate,
                 userLocation: req.body.userLocation,
                 gender: req.body.gender,
-                bio: req.body.bio
+                bio: req.body.bio,
             };
             const location = yield userBo_1.userBo.postUser(data);
             res.status(200).json({ results: location });
-        });
-    }
-    putUser(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const id = req.params;
-            const data = {
-                userName: req.body.userName,
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password,
-                bithDate: req.body.bithDate,
-                userLocation: req.body.userLocation,
-                gender: req.body.gender,
-                bio: req.body.bio
-            };
-            const location = yield userBo_1.userBo.putUser(id, data);
-            res.status(200).json({ results: location });
-        });
-    }
-    deleteUser(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const user = yield userBo_1.userBo.deletetUser(req.params);
-            res.status(200).json({ results: user });
         });
     }
 }

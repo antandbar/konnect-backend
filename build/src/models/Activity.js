@@ -1,58 +1,47 @@
 'use strict';
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const { DataTypes, Model } = require('sequelize');
-const { db } = require('../lib/connectPostgresql');
-const Location_1 = __importDefault(require("./Location"));
-const Category_1 = __importDefault(require("./Category"));
-class ActivitySchema extends Model {
+const sequelize_1 = require("sequelize");
+const connectPostgresql_1 = require("../lib/connectPostgresql");
+class ActivitySchema extends sequelize_1.Model {
 }
 ActivitySchema.init({
     id: {
-        type: DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
     title: {
-        type: DataTypes.STRING(50),
+        type: sequelize_1.DataTypes.STRING(50),
         allowNull: false,
     },
     description: {
-        type: DataTypes.STRING(900),
+        type: sequelize_1.DataTypes.STRING(900),
     },
     userLimit: {
-        type: DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.INTEGER,
     },
     activityDate: {
-        type: DataTypes.DATE,
+        type: sequelize_1.DataTypes.DATE,
     },
     locationId: {
-        type: DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
-        model: "locations",
-        referencesKey: "id"
     },
     place: {
-        type: DataTypes.STRING(50),
+        type: sequelize_1.DataTypes.STRING(50),
     },
     maxAge: {
-        type: DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.INTEGER,
     },
     minAge: {
-        type: DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.INTEGER,
     },
     categoryId: {
-        type: DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
-        model: "categories",
-        referencesKey: "id"
     }
 }, {
-    sequelize: db,
+    sequelize: connectPostgresql_1.db,
     modelName: 'activities',
 });
-Location_1.default.hasMany(ActivitySchema);
-Category_1.default.hasMany(ActivitySchema);
 exports.default = ActivitySchema;

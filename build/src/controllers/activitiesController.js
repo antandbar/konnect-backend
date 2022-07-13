@@ -29,7 +29,7 @@ class ActivitiesController {
                 place: req.body.place,
                 maxAge: req.body.maxAge,
                 minAge: req.body.minAge,
-                categoryId: req.body.categoryId
+                categoryId: req.body.categoryId,
             };
             const activity = yield activitiesBo_1.activitiessBo.postActivities(data);
             res.status(200).json({ results: activity });

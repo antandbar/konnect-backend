@@ -27,41 +27,5 @@ class UserBo {
             return user;
         });
     }
-    putUser(id, data) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const dataSend = {
-                userName: data.userName,
-                name: data.name,
-                email: data.email,
-                password: data.password,
-                userLocation: data.userLocation,
-                gender: data.gender,
-                bio: data.bio
-            };
-            const idUser = id.id;
-            const userUpdated = yield User_1.default.update(dataSend, {
-                where: {
-                    id: idUser
-                }
-            });
-            if (userUpdated) {
-                const user = yield User_1.default.findAll({ id: idUser });
-                return user;
-            }
-            return userUpdated;
-        });
-    }
-    deletetUser(idUser) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = idUser;
-            console.log(id);
-            const user = yield User_1.default.destroy({
-                where: {
-                    id: id
-                }
-            });
-            return user;
-        });
-    }
 }
 exports.userBo = new UserBo();

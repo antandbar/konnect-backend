@@ -27,24 +27,25 @@ class UserStatusBo {
             return userStatus;
         });
     }
-    putUserStatus(id, data) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const dataSend = {
-                statusDescription: data.statusDescription,
-            };
-            const idUser = id.id;
-            const userUpdated = yield UserStatus_1.default.update(dataSend, {
-                where: {
-                    id: idUser
-                }
-            });
-            if (userUpdated) {
-                const user = yield UserStatus_1.default.findAll({ id: idUser });
-                return user;
-            }
-            return userUpdated;
+    /*   public async putUserStatus(id: any, data:any): Promise<UserStatus[]> {
+        const dataSend = {
+          statusDescription: data.statusDescription,
+        }
+        const idUser = id.id;
+    
+        const userUpdated = await UserStatusSchema.update(dataSend,{
+          where: {
+            id: idUser
+          }
         });
-    }
+    
+        if (userUpdated) {
+          const user: UserStatus[] = await UserStatusSchema.findAll({id: idUser})
+          return user;
+        }
+    
+        return userUpdated;
+      } */
     deleteUserStatus(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const idUserStatus = id.id;

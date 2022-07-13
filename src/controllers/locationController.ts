@@ -2,7 +2,7 @@
 
 import { Request, Response } from 'express';
 import { Location } from '../models/Location';
-import { locationBo } from '../bos/locationBo'
+import { locationBo } from '../bos/locationBo';
 
 class LocationController {
   public async getLocation(req: Request, res: Response): Promise<void> {
@@ -15,7 +15,6 @@ class LocationController {
     const location: Location[] = await locationBo.postLocation(data);
     res.status(200).json({ results: location });
   }
-
 }
 
 export const locationController = new LocationController();

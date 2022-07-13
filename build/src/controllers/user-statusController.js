@@ -25,15 +25,13 @@ class UserStatusController {
             res.status(200).json({ results: userStatus });
         });
     }
-    putUserStatus(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const data = {
-                statusDescription: req.body.statusDescription,
-            };
-            const userStatus = yield user_statusBo_1.userStatusBo.putUserStatus(req.params, data);
-            res.status(200).json({ results: userStatus });
-        });
-    }
+    /*   public async putUserStatus(req: Request, res: Response): Promise<void> {
+      const data: object = {
+        statusDescription: req.body.statusDescription,
+      }
+      const userStatus: UserStatus[] = await userStatusBo.putUserStatus(req.params, data);
+      res.status(200).json({ results: userStatus });
+    } */
     deleteUserStatus(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const userStatus = yield user_statusBo_1.userStatusBo.deleteUserStatus(req.params);

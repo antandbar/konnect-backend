@@ -2,7 +2,7 @@
 
 import { Request, Response } from 'express';
 import { Activity } from '../models/Activity';
-import { activitiessBo } from '../bos/activitiesBo'
+import { activitiessBo } from '../bos/activitiesBo';
 
 class ActivitiesController {
   public async getActivities(req: Request, res: Response): Promise<void> {
@@ -11,7 +11,6 @@ class ActivitiesController {
   }
 
   public async postctivities(req: Request, res: Response): Promise<void> {
-
     const data = {
       title: req.body.title,
       description: req.body.description,
@@ -21,13 +20,12 @@ class ActivitiesController {
       place: req.body.place,
       maxAge: req.body.maxAge,
       minAge: req.body.minAge,
-      categoryId: req.body.categoryId
-    }
+      categoryId: req.body.categoryId,
+    };
 
     const activity: Activity[] = await activitiessBo.postActivities(data);
     res.status(200).json({ results: activity });
   }
-
 }
 
 export const activitiesController = new ActivitiesController();

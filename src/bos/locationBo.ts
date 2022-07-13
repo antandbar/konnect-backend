@@ -10,7 +10,7 @@ class LocationBo {
   }
 
   public async postLocation(data: any): Promise<Location[]> {
-    const location: Location[] = await LocationSchema.create(data);
+    const location: any = await LocationSchema.create(data);
 
     return location;
   }

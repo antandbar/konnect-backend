@@ -25,7 +25,7 @@ class UserController {
     res.status(200).json({ results: location });
   }
 
-  public async putUser(req: Request, res: Response): Promise<void> {
+/*   public async putUser(req: Request, res: Response): Promise<void> {
     const id = req.params;
 
     const data: object = {
@@ -40,12 +40,12 @@ class UserController {
     }
     const location: User[] = await userBo.putUser(id, data);
     res.status(200).json({ results: location });
-  }
+  } */
 
-  public async deleteUser(req: Request, res: Response): Promise<void> {
+/*   public async deleteUser(req: Request, res: Response): Promise<void> {
     const user: User[] = await userBo.deletetUser(req.params);
     res.status(200).json({ results: user });
-  }
+  } */
 }
 
 export const userController = new UserController();

@@ -1,7 +1,7 @@
 'use strict';
 
-const { DataTypes, Model } = require('sequelize');
-const { db } = require('../lib/connectPostgresql');
+import { DataTypes, Model } from 'sequelize';
+import { db } from '../lib/connectPostgresql';
 
 export interface Location {
   id: number;

@@ -15,6 +15,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "google-search-results-nodejs": "^2.1.0",
@@ -26,8 +28,11 @@
     "sequelize": "^6.21.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/http-errors": "^1.8.2",
     "@types/mongoose": "^5.11.97",
+    "@types/morgan": "^1.9.3",
     "nodemon": "^2.0.16",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.4"

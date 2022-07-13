@@ -1,10 +1,8 @@
 'use strict';
 
-const { DataTypes, Model } = require('sequelize');
-const { db } = require('../lib/connectPostgresql');
-import UserSchema from "./User"
-import ActivitySchema from "./Activity"
-import UserStatusSchema from "./UserStatus"
+import { DataTypes, Model } from 'sequelize';
+import { db } from '../lib/connectPostgresql';
+
 
 
 export interface Tracking {
@@ -32,20 +30,14 @@ TrackingSchema.init(
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      model:"users",
-      referencesKey:"id"
     },
     activityId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      model:"activities",
-      referencesKey:"id"
     },
     userStatusId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      model:"userStatuses",
-      referencesKey:"id"
     },
   },
   {
@@ -55,8 +47,6 @@ TrackingSchema.init(
   },
 );
 
-UserSchema.hasMany(TrackingSchema);
-ActivitySchema.hasMany(TrackingSchema);
-UserStatusSchema.hasMany(TrackingSchema)
+
 
 export default TrackingSchema;

@@ -1,9 +1,7 @@
 'use strict';
 
-const { DataTypes, Model } = require('sequelize');
-const { db } = require('../lib/connectPostgresql');
-import LocationSchema from "./Location"
-import CategorySchema from "./Category"
+import { DataTypes, Model } from 'sequelize';
+import { db } from '../lib/connectPostgresql';
 
 export interface Activity {
   id: number;
@@ -54,8 +52,7 @@ ActivitySchema.init(
     locationId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      model:"locations",
-      referencesKey:"id"
+
     },
     place: {
       type: DataTypes.STRING(50),
@@ -69,8 +66,6 @@ ActivitySchema.init(
     categoryId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      model:"categories",
-      referencesKey:"id"
     }
   },
   {
@@ -79,6 +74,5 @@ ActivitySchema.init(
   },
 );
 
-LocationSchema.hasMany(ActivitySchema);
-CategorySchema.hasMany(ActivitySchema);
+
 export default ActivitySchema;

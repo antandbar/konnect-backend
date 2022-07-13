@@ -1,9 +1,8 @@
 'use strict';
 
-const { DataTypes, Model } = require('sequelize');
-const { db } = require('../lib/connectPostgresql');
-import UserSchema from "./User"
-import ActivitySchema from "./Activity"
+import { DataTypes, Model } from 'sequelize';
+import { db } from '../lib/connectPostgresql';
+
 
 export interface Comment {
   id: number;
@@ -31,14 +30,10 @@ CommentSchema.init(
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      model:"users",
-      referencesKey:"id"
     },
     activityId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      model:"activities",
-      referencesKey:"id"
     },
     commentText: {
       type: DataTypes.STRING(50),
@@ -55,7 +50,6 @@ CommentSchema.init(
   },
 );
 
-UserSchema.hasMany(CommentSchema);
-ActivitySchema.hasMany(CommentSchema);
+
 
 export default CommentSchema;

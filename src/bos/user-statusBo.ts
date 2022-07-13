@@ -10,12 +10,12 @@ class UserStatusBo {
   }
 
   public async postUserStatus(data: any): Promise<UserStatus[]> {
-    const userStatus: UserStatus[] = await UserStatusSchema.create(data);
+    const userStatus: any = await UserStatusSchema.create(data);
 
     return userStatus;
   }
 
-  public async putUserStatus(id: any, data:any): Promise<UserStatus[]> {
+/*   public async putUserStatus(id: any, data:any): Promise<UserStatus[]> {
     const dataSend = {
       statusDescription: data.statusDescription,
     }
@@ -33,12 +33,12 @@ class UserStatusBo {
     }
 
     return userUpdated;
-  }
+  } */
 
   public async deleteUserStatus(id: any): Promise<UserStatus[]> {
 
     const idUserStatus = id.id;
-    const user: UserStatus[] = await UserStatusSchema.destroy({
+    const user: any = await UserStatusSchema.destroy({
       where: {
         id: idUserStatus
       }

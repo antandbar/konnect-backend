@@ -1,34 +1,34 @@
 'use strict';
 
-const { Sequelize } = require('sequelize');
+import { Sequelize } from 'sequelize';
 
-const db = new Sequelize(process.env.POSTGRESQL_DATABASE,process.env.POSTGRESQL_USER,process.env.POSTGRESQL_PASSWORD, {
-    host: process.env.POSTGRESQL_HOST,
+const db = new Sequelize(
+  process.env.POSTGRESQL_DATABASE as string,
+  process.env.POSTGRESQL_USER as string,
+  process.env.POSTGRESQL_PASSWORD as string,
+  {
+    host: process.env.POSTGRESQL_HOST as string,
     dialect: 'postgres',
     // logging: false
-});
+  },
+);
 
+const dbPostgresqlConnection = async (): Promise<void> => {
+  try {
+    await db.authenticate();
+    console.log('Database postgresql online');
 
-const dbPostgresqlConnection = async () => {
+    // Se sincroniza el modelo
+    await db.sync({alter: true});
+    
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
 
-    try {
-        
-        await db.authenticate();
-        console.log('Database postgresql online');
-
-        // Se sincroniza el modelo
-        await db.sync();
-
-
-    } catch (error:any) {
-        throw new Error( error );
-    }
-} 
-
-dbPostgresqlConnection();
-
-module.exports = {
-    db
-}
+export  {
+  db,
+  dbPostgresqlConnection,
+};
 
 

@@ -9,8 +9,8 @@ class ActivitiessBo {
     return topics;
   }
 
-  public async postActivities(data: Object): Promise<Activity[]> {
-    const activity: Activity[] = await ActivitySchema.create(data);
+  public async postActivities(data: any): Promise<Activity[]> {
+    const activity: any = await ActivitySchema.create(data);
 
     return activity;
   }

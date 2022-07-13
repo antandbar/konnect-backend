@@ -1,10 +1,15 @@
 'use strict';
 
-import express, { Request, Response, NextFunction } from 'express';
-const logger = require('morgan');
-const createError = require('http-errors');
-import path from 'path';
 import 'dotenv/config';
+import express, { Request, Response, NextFunction } from 'express';
+import morgan from 'morgan';
+import cors from 'cors';
+import createHttpError from 'http-errors';
+import path from 'path';
+import { dbMongodbConnection } from './lib/connectMogoose';
+import { dbPostgresqlConnection } from './lib/connectPostgresql';
+import Associations from './models/Associations';
+
 
 // Routes
 import SearchEnginesRoutes from './routes/searchEngines';
@@ -19,14 +24,19 @@ import UserStatusRoutes from './routes/user-status';
 
 // Inicializaciones
 const app = express();
-require('./lib/connectMogoose');
-require('./lib/connectPostgresql');
+dbMongodbConnection();
+dbPostgresqlConnection();
+
+Associations.relations();
 
 //Configuracionesa
 app.set('port', process.env.PORT || 3000);
 
 // Middelwares
-app.use(logger('dev'));
+app.use(morgan('dev'));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 
 app.use(express.json());
@@ -56,7 +66,7 @@ app.listen(app.get('port'), () => {
 
 // catch 404 and forward to error handler
 app.use(function (req: Request, res: Response, next: NextFunction) {
-  next(createError(404));
+  next(createHttpError(404));
 });
 
 // error handler

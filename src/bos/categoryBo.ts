@@ -10,7 +10,7 @@ class CategoryBo {
   }
 
   public async postCategory(data:any): Promise<Category[]> {
-    const category: Category[] = await CategorySchema.create(data);
+    const category: any = await CategorySchema.create(data);
 
     return category;
   }

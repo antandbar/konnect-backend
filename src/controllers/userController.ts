@@ -10,6 +10,11 @@ class UserController {
     res.status(200).json({ results: location });
   }
 
+  public async getUserDetail(req: Request, res: Response): Promise<void> {
+    const location: User[] = await userBo.getUserDetail(req.params.id);
+    res.status(200).json({ results: location });
+  }
+
   public async postUser(req: Request, res: Response): Promise<void> {
     const data: object = {
       userName: req.body.userName,

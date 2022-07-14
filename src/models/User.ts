@@ -4,7 +4,7 @@ import { DataTypes, Model } from 'sequelize';
 import { db } from '../lib/connectPostgresql';
 
 export interface User {
-  id: number;
+  id?: number;
   userName: string;
   name: string;
   email: string;

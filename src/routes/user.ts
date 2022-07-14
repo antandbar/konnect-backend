@@ -6,6 +6,7 @@ import { userController } from '../controllers/userController';
 const router: Router = Router();
 
 router.get('/', userController.getUser);
+router.get('/:id', userController.getUserDetail);
 
 router.post('/', userController.postUser);
 //router.put('/:id', userController.putUser);

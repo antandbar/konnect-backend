@@ -9,14 +9,21 @@ class UserBo {
     return topics;
   }
 
-  public async postUser(data: any): Promise<User[]> {
+  public async getUserDetail(id: any): Promise<User[]> {
+    const topics: User[] = await UserSchema.findAll({
+      where: { id: id },
+    });
 
+    return topics;
+  }
+
+  public async postUser(data: any): Promise<User[]> {
     const user: any = await UserSchema.create(data);
 
     return user;
   }
 
-/*   public async putUser(id:any, data: any): Promise<User[]> {
+  /*   public async putUser(id:any, data: any): Promise<User[]> {
 
     const dataSend = {
       userName: data.userName,
@@ -44,8 +51,7 @@ class UserBo {
 
   } */
 
-
-/*   public async deletetUser(idUser: any): Promise<User[]> {
+  /*   public async deletetUser(idUser: any): Promise<User[]> {
     const { id } = idUser;
     console.log(id)
     const user: User[] = await UserSchema.destroy({

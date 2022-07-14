@@ -1,16 +1,16 @@
 'use strict';
 
 import TrackingSchema, { Tracking } from '../models/Tracking';
-import UserSchema  from '../models/User';
-import ActivitySchema  from '../models/Activity';
-import userStatusSchema  from '../models/UserStatus';
+import UserSchema from '../models/User';
+import ActivitySchema from '../models/Activity';
+import userStatusSchema from '../models/UserStatus';
 
 class TrackingBo {
-  public async getTracking(filters:any): Promise<Tracking[]> {
+  public async getTracking(filters: any): Promise<Tracking[]> {
     const topics: Tracking[] = await TrackingSchema.findAll({
       where: filters,
       attributes: {
-        exclude: ['userId', 'activityId','userStatusId'],
+        exclude: ['userId', 'activityId', 'userStatusId'],
       },
       include: [
         {
@@ -30,6 +30,12 @@ class TrackingBo {
 
   public async postTracking(data: any): Promise<Tracking[]> {
     const tracking: any = await TrackingSchema.create(data);
+
+    return tracking;
+  }
+
+  public async updateTracking(id: any, data: any): Promise<Tracking[]> {
+    const tracking: any = TrackingSchema.update(data, { where: { id: id } });
 
     return tracking;
   }

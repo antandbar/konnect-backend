@@ -7,6 +7,7 @@ const router: Router = Router();
 
 router.get('/', trackingController.getTracking);
 router.post('/', trackingController.postTracking);
+router.put('/:id', trackingController.updateTracking);
 
 
 export default router;

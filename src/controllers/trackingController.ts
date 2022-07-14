@@ -43,6 +43,25 @@ class TrackingController {
       next(error);
     }
   }
+
+  public async updateTracking(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const data = {
+        userId: req.body.userId,
+        activityId: req.body.activityId,
+        userStatusId: req.body.userStatusId,
+      };
+
+      const tracking: Tracking[] = await trackingBo.updateTracking(req.params.id,data);
+      res.status(200).json({ results: tracking });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export const trackingController = new TrackingController();

@@ -9,5 +9,7 @@ const router: Router = Router();
 router.get('/', activitiesController.getActivities);
 // Crear Actividad
 router.post('/', activitiesController.postctivities);
+// Eliminar Actividad
+router.delete('/:id', activitiesController.deleteActivities);
 
 export default router;

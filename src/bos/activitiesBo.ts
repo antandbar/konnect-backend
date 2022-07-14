@@ -14,6 +14,17 @@ class ActivitiessBo {
 
     return activity;
   }
+
+  public async deleteActivities(id: any): Promise<Activity[]> {
+    
+    const activity: any = await ActivitySchema.destroy({
+      where: {
+        id: id
+      }
+    });
+
+    return activity;
+  }
 }
 
 export const activitiessBo = new ActivitiessBo();

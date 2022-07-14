@@ -26,6 +26,14 @@ class ActivitiesController {
     const activity: Activity[] = await activitiessBo.postActivities(data);
     res.status(200).json({ results: activity });
   }
+
+  public async deleteActivities(req: Request, res: Response): Promise<void> {
+    const activity: any = await activitiessBo.deleteActivities(
+      req.params.id,
+    );
+
+    res.status(200).json({ results: activity });
+  }
 }
 
 export const activitiesController = new ActivitiesController();

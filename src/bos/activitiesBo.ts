@@ -5,8 +5,10 @@ import LocationSchema from '../models/Location';
 import CategorySchema from '../models/Category';
 
 class ActivitiessBo {
-  public async getActivities(): Promise<Activity[]> {
+  public async getActivities(filters:any): Promise<Activity[]> {
+
     const activities: Activity[] = await ActivitySchema.findAll({
+      where: filters,
       attributes: {
         exclude: ['locationId', 'categoryId'],
       },

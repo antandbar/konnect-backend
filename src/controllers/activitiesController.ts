@@ -6,7 +6,17 @@ import { activitiessBo } from '../bos/activitiesBo';
 
 class ActivitiesController {
   public async getActivities(req: Request, res: Response): Promise<void> {
-    const activity: Activity[] = await activitiessBo.getActivities();
+    const { categoryId } = req.query;
+    const { locationId } = req.query;
+    const { activityDate } = req.query;
+
+    const filters: any = {};
+
+    if (categoryId) filters.categoryId = categoryId;
+    if (locationId) filters.locationId = locationId;
+    if (activityDate) filters.activityDate = activityDate;
+
+    const activity: Activity[] = await activitiessBo.getActivities(filters);
     res.status(200).json({ results: activity });
   }
 

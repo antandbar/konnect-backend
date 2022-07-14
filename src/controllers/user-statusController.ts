@@ -1,20 +1,36 @@
 'use strict';
 
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { UserStatus } from '../models/UserStatus';
 import { userStatusBo } from '../bos/user-statusBo';
 
 class UserStatusController {
-  public async getUserStatus(req: Request, res: Response): Promise<void> {
-    const userStatus: UserStatus[] = await userStatusBo.getUserStatus();
-    res.status(200).json({ results: userStatus });
+  public async getUserStatus(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const userStatus: UserStatus[] = await userStatusBo.getUserStatus();
+      res.status(200).json({ results: userStatus });
+    } catch (error) {
+      next(error);
+    }
   }
 
-  public async postUserStatus(req: Request, res: Response): Promise<void> {
-    const data = req.body;
+  public async postUserStatus(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const data = req.body;
 
-    const userStatus: UserStatus[] = await userStatusBo.postUserStatus(data);
-    res.status(201).json({ results: userStatus });
+      const userStatus: UserStatus[] = await userStatusBo.postUserStatus(data);
+      res.status(201).json({ results: userStatus });
+    } catch (error) {
+      next(error);
+    }
   }
 
   /*   public async putUserStatus(req: Request, res: Response): Promise<void> {
@@ -25,11 +41,19 @@ class UserStatusController {
     res.status(200).json({ results: userStatus });
   } */
 
-  public async deleteUserStatus(req: Request, res: Response): Promise<void> {
-    const userStatus: UserStatus[] = await userStatusBo.deleteUserStatus(
-      req.params,
-    );
-    res.status(200).json({ results: userStatus });
+  public async deleteUserStatus(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const userStatus: UserStatus[] = await userStatusBo.deleteUserStatus(
+        req.params,
+      );
+      res.status(200).json({ results: userStatus });
+    } catch (error) {
+      next(error);
+    }
   }
 }
 

@@ -1,10 +1,24 @@
 'use strict';
 
 import ActivitySchema, { Activity } from '../models/Activity';
+import LocationSchema from '../models/Location';
+import CategorySchema from '../models/Category';
 
 class ActivitiessBo {
   public async getActivities(): Promise<Activity[]> {
-    const topics: Activity[] = await ActivitySchema.findAll();
+    const topics: Activity[] = await ActivitySchema.findAll({
+      attributes: {
+        exclude: ['locationId', 'categoryId']
+      },
+      include: [
+        {
+          model: LocationSchema,
+        },
+        {
+          model: CategorySchema,
+        }
+      ]
+    });
 
     return topics;
   }

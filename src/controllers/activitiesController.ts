@@ -11,9 +11,7 @@ class ActivitiesController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const { categoryId } = req.query;
-      const { locationId } = req.query;
-      const { activityDate } = req.query;
+      const { categoryId, locationId, activityDate } = req.query;
 
       const filters: any = {};
 

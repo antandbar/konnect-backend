@@ -11,8 +11,34 @@ class TrackingController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const trakings: Tracking[] = await trackingBo.getTracking();
+      const { userId, activityId, userStatusId } = req.query;
+
+      const filters: any = {};
+
+      if (userId) filters.userId = userId;
+      if (activityId) filters.activityId = activityId;
+      if (userStatusId) filters.userStatusId = userStatusId;
+      const trakings: Tracking[] = await trackingBo.getTracking(filters);
       res.status(200).json({ results: trakings });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async postTracking(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const data = {
+        userId: req.body.userId,
+        activityId: req.body.activityId,
+        userStatusId: req.body.userStatusId,
+      };
+
+      const tracking: Tracking[] = await trackingBo.postTracking(data);
+      res.status(201).json({ results: tracking });
     } catch (error) {
       next(error);
     }

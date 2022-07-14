@@ -6,7 +6,7 @@ import { db } from '../lib/connectPostgresql';
 
 
 export interface Tracking {
-  id: number;
+  id?: number;
   userId: number;
   activityId:number;
   userStatusId:number;

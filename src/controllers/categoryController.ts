@@ -13,7 +13,7 @@ class CategoryController {
   public async postCategory(req: Request, res: Response): Promise<void> {
     const data = req.body;
     const category: Category[] = await categoryBo.postCategory(data);
-    res.status(200).json({ results: category });
+    res.status(201).json({ results: category });
   }
 }
 

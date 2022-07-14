@@ -13,7 +13,7 @@ class LocationController {
   public async postLocation(req: Request, res: Response): Promise<void> {
     const data = req.body;
     const location: Location[] = await locationBo.postLocation(data);
-    res.status(200).json({ results: location });
+    res.status(201).json({ results: location });
   }
 }
 

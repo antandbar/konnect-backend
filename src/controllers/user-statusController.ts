@@ -14,7 +14,7 @@ class UserStatusController {
     const data = req.body;
 
     const userStatus: UserStatus[] = await userStatusBo.postUserStatus(data);
-    res.status(200).json({ results: userStatus });
+    res.status(201).json({ results: userStatus });
   }
 
   /*   public async putUserStatus(req: Request, res: Response): Promise<void> {

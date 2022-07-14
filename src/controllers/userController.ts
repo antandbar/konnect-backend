@@ -22,7 +22,7 @@ class UserController {
       bio: req.body.bio,
     };
     const location: User[] = await userBo.postUser(data);
-    res.status(200).json({ results: location });
+    res.status(201).json({ results: location });
   }
 
   /*   public async putUser(req: Request, res: Response): Promise<void> {

@@ -12,17 +12,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.locationController = void 0;
 const locationBo_1 = require("../bos/locationBo");
 class LocationController {
-    getLocation(req, res) {
+    getLocation(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const location = yield locationBo_1.locationBo.getLocation();
-            res.status(200).json({ results: location });
+            try {
+                const location = yield locationBo_1.locationBo.getLocation();
+                res.status(200).json({ results: location });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
-    postLocation(req, res) {
+    postLocation(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = req.body;
-            const location = yield locationBo_1.locationBo.postLocation(data);
-            res.status(200).json({ results: location });
+            try {
+                const data = req.body;
+                const location = yield locationBo_1.locationBo.postLocation(data);
+                res.status(201).json({ results: location });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
 }

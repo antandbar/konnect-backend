@@ -12,27 +12,67 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.activitiesController = void 0;
 const activitiesBo_1 = require("../bos/activitiesBo");
 class ActivitiesController {
-    getActivities(req, res) {
+    getActivities(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const activity = yield activitiesBo_1.activitiessBo.getActivities();
-            res.status(200).json({ results: activity });
+            try {
+                const { categoryId, locationId, activityDate } = req.query;
+                const filters = {};
+                if (categoryId)
+                    filters.categoryId = categoryId;
+                if (locationId)
+                    filters.locationId = locationId;
+                if (activityDate)
+                    filters.activityDate = activityDate;
+                const activity = yield activitiesBo_1.activitiessBo.getActivities(filters);
+                res.status(200).json({ results: activity });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
-    postctivities(req, res) {
+    getActivityDetails(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = {
-                title: req.body.title,
-                description: req.body.description,
-                userLimit: req.body.userLimit,
-                activityDate: req.body.activityDate,
-                locationId: req.body.locationId,
-                place: req.body.place,
-                maxAge: req.body.maxAge,
-                minAge: req.body.minAge,
-                categoryId: req.body.categoryId,
-            };
-            const activity = yield activitiesBo_1.activitiessBo.postActivities(data);
-            res.status(200).json({ results: activity });
+            try {
+                const activity = yield activitiesBo_1.activitiessBo.getActivityDetail(req.params.id);
+                res.status(200).json({ results: activity });
+            }
+            catch (error) {
+                next(error);
+            }
+        });
+    }
+    postctivities(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = {
+                    title: req.body.title,
+                    description: req.body.description,
+                    userLimit: req.body.userLimit,
+                    activityDate: req.body.activityDate,
+                    locationId: req.body.locationId,
+                    place: req.body.place,
+                    maxAge: req.body.maxAge,
+                    minAge: req.body.minAge,
+                    categoryId: req.body.categoryId,
+                };
+                const activity = yield activitiesBo_1.activitiessBo.postActivities(data);
+                res.status(201).json({ results: activity });
+            }
+            catch (error) {
+                next(error);
+            }
+        });
+    }
+    deleteActivities(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const activity = yield activitiesBo_1.activitiessBo.deleteActivities(req.params.id);
+                res.status(200).json({ results: activity });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
 }

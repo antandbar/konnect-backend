@@ -12,10 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.commentsController = void 0;
 const commentsBo_1 = require("../bos/commentsBo");
 class CommentsController {
-    getComments(req, res) {
+    getComments(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const comments = yield commentsBo_1.commentBo.getComments();
-            res.status(200).json({ results: comments });
+            try {
+                const comments = yield commentsBo_1.commentBo.getComments();
+                res.status(200).json({ results: comments });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
 }

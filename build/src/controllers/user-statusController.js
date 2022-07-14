@@ -12,17 +12,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userStatusController = void 0;
 const user_statusBo_1 = require("../bos/user-statusBo");
 class UserStatusController {
-    getUserStatus(req, res) {
+    getUserStatus(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userStatus = yield user_statusBo_1.userStatusBo.getUserStatus();
-            res.status(200).json({ results: userStatus });
+            try {
+                const userStatus = yield user_statusBo_1.userStatusBo.getUserStatus();
+                res.status(200).json({ results: userStatus });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
-    postUserStatus(req, res) {
+    postUserStatus(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = req.body;
-            const userStatus = yield user_statusBo_1.userStatusBo.postUserStatus(data);
-            res.status(200).json({ results: userStatus });
+            try {
+                const data = req.body;
+                const userStatus = yield user_statusBo_1.userStatusBo.postUserStatus(data);
+                res.status(201).json({ results: userStatus });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
     /*   public async putUserStatus(req: Request, res: Response): Promise<void> {
@@ -32,10 +42,15 @@ class UserStatusController {
       const userStatus: UserStatus[] = await userStatusBo.putUserStatus(req.params, data);
       res.status(200).json({ results: userStatus });
     } */
-    deleteUserStatus(req, res) {
+    deleteUserStatus(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userStatus = yield user_statusBo_1.userStatusBo.deleteUserStatus(req.params);
-            res.status(200).json({ results: userStatus });
+            try {
+                const userStatus = yield user_statusBo_1.userStatusBo.deleteUserStatus(req.params);
+                res.status(200).json({ results: userStatus });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
 }

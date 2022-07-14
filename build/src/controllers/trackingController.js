@@ -12,10 +12,55 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.trackingController = void 0;
 const trackingBo_1 = require("../bos/trackingBo");
 class TrackingController {
-    getTracking(req, res) {
+    getTracking(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const trakings = yield trackingBo_1.trackingBo.getTracking();
-            res.status(200).json({ results: trakings });
+            try {
+                const { userId, activityId, userStatusId } = req.query;
+                const filters = {};
+                if (userId)
+                    filters.userId = userId;
+                if (activityId)
+                    filters.activityId = activityId;
+                if (userStatusId)
+                    filters.userStatusId = userStatusId;
+                const trakings = yield trackingBo_1.trackingBo.getTracking(filters);
+                res.status(200).json({ results: trakings });
+            }
+            catch (error) {
+                next(error);
+            }
+        });
+    }
+    postTracking(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = {
+                    userId: req.body.userId,
+                    activityId: req.body.activityId,
+                    userStatusId: req.body.userStatusId,
+                };
+                const tracking = yield trackingBo_1.trackingBo.postTracking(data);
+                res.status(201).json({ results: tracking });
+            }
+            catch (error) {
+                next(error);
+            }
+        });
+    }
+    updateTracking(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = {
+                    userId: req.body.userId,
+                    activityId: req.body.activityId,
+                    userStatusId: req.body.userStatusId,
+                };
+                const tracking = yield trackingBo_1.trackingBo.updateTracking(req.params.id, data);
+                res.status(200).json({ results: tracking });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
 }

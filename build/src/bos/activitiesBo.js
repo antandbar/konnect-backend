@@ -14,16 +14,62 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.activitiessBo = void 0;
 const Activity_1 = __importDefault(require("../models/Activity"));
+const Location_1 = __importDefault(require("../models/Location"));
+const Category_1 = __importDefault(require("../models/Category"));
 class ActivitiessBo {
-    getActivities() {
+    getActivities(filters) {
         return __awaiter(this, void 0, void 0, function* () {
-            const topics = yield Activity_1.default.findAll();
-            return topics;
+            const activities = yield Activity_1.default.findAll({
+                where: filters,
+                attributes: {
+                    exclude: ['locationId', 'categoryId'],
+                },
+                include: [
+                    {
+                        model: Location_1.default,
+                    },
+                    {
+                        model: Category_1.default,
+                    },
+                ],
+            });
+            return activities;
+        });
+    }
+    getActivityDetail(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const activities = yield Activity_1.default.findAll({
+                where: {
+                    id: id,
+                },
+                attributes: {
+                    exclude: ['locationId', 'categoryId'],
+                },
+                include: [
+                    {
+                        model: Location_1.default,
+                    },
+                    {
+                        model: Category_1.default,
+                    },
+                ],
+            });
+            return activities;
         });
     }
     postActivities(data) {
         return __awaiter(this, void 0, void 0, function* () {
             const activity = yield Activity_1.default.create(data);
+            return activity;
+        });
+    }
+    deleteActivities(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const activity = yield Activity_1.default.destroy({
+                where: {
+                    id: id,
+                },
+            });
             return activity;
         });
     }

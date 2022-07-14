@@ -12,10 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.searchEnginesController = void 0;
 const SearchEnginesBo_1 = require("../bos/SearchEnginesBo");
 class SearchEnginesController {
-    getSearchEngines(req, res) {
+    getSearchEngines(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const searchEngines = yield SearchEnginesBo_1.searchEnginesBo.getsearchEngines();
-            res.status(200).json({ results: searchEngines });
+            try {
+                const searchEngines = yield SearchEnginesBo_1.searchEnginesBo.getsearchEngines();
+                res.status(200).json({ results: searchEngines });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
 }

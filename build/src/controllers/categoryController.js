@@ -12,17 +12,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.categoryController = void 0;
 const categoryBo_1 = require("../bos/categoryBo");
 class CategoryController {
-    getCategory(req, res) {
+    getCategory(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const activity = yield categoryBo_1.categoryBo.getCategory();
-            res.status(200).json({ results: activity });
+            try {
+                const activity = yield categoryBo_1.categoryBo.getCategory();
+                res.status(200).json({ results: activity });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
-    postCategory(req, res) {
+    postCategory(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = req.body;
-            const category = yield categoryBo_1.categoryBo.postCategory(data);
-            res.status(200).json({ results: category });
+            try {
+                const data = req.body;
+                const category = yield categoryBo_1.categoryBo.postCategory(data);
+                res.status(201).json({ results: category });
+            }
+            catch (error) {
+                next(error);
+            }
         });
     }
 }

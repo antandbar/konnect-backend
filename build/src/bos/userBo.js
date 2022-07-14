@@ -21,6 +21,14 @@ class UserBo {
             return topics;
         });
     }
+    getUserDetail(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const topics = yield User_1.default.findAll({
+                where: { id: id },
+            });
+            return topics;
+        });
+    }
     postUser(data) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield User_1.default.create(data);

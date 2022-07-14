@@ -10,6 +10,11 @@ class ActivitiesController {
     res.status(200).json({ results: activity });
   }
 
+  public async getActivityDetails(req: Request, res: Response): Promise<void> {
+    const activity: any = await activitiessBo.getActivityDetail(req.params.id);
+    res.status(200).json({ results: activity });
+  }
+
   public async postctivities(req: Request, res: Response): Promise<void> {
     const data = {
       title: req.body.title,
@@ -28,9 +33,7 @@ class ActivitiesController {
   }
 
   public async deleteActivities(req: Request, res: Response): Promise<void> {
-    const activity: any = await activitiessBo.deleteActivities(
-      req.params.id,
-    );
+    const activity: any = await activitiessBo.deleteActivities(req.params.id);
 
     res.status(200).json({ results: activity });
   }

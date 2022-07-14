@@ -6,9 +6,9 @@ import CategorySchema from '../models/Category';
 
 class ActivitiessBo {
   public async getActivities(): Promise<Activity[]> {
-    const topics: Activity[] = await ActivitySchema.findAll({
+    const activities: Activity[] = await ActivitySchema.findAll({
       attributes: {
-        exclude: ['locationId', 'categoryId']
+        exclude: ['locationId', 'categoryId'],
       },
       include: [
         {
@@ -16,11 +16,32 @@ class ActivitiessBo {
         },
         {
           model: CategorySchema,
-        }
-      ]
+        },
+      ],
     });
 
-    return topics;
+    return activities;
+  }
+
+  public async getActivityDetail(id: any): Promise<Activity[]> {
+    const activities: Activity[] = await ActivitySchema.findAll({
+      where: {
+        id: id,
+      },
+      attributes: {
+        exclude: ['locationId', 'categoryId'],
+      },
+      include: [
+        {
+          model: LocationSchema,
+        },
+        {
+          model: CategorySchema,
+        },
+      ],
+    });
+
+    return activities;
   }
 
   public async postActivities(data: any): Promise<Activity[]> {
@@ -30,11 +51,10 @@ class ActivitiessBo {
   }
 
   public async deleteActivities(id: any): Promise<Activity[]> {
-    
     const activity: any = await ActivitySchema.destroy({
       where: {
-        id: id
-      }
+        id: id,
+      },
     });
 
     return activity;

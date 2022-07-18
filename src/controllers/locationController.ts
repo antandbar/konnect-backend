@@ -2,7 +2,7 @@
 
 import { Request, Response, NextFunction } from 'express';
 import { Location } from '../models/Location';
-import { locationBo } from '../bos/locationBo';
+import { locationBo } from '../bos/locationsBo';
 
 class LocationController {
   public async getLocation(

@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.trackingController = void 0;
-const trackingBo_1 = require("../bos/trackingBo");
+const trackingsBo_1 = require("../bos/trackingsBo");
 class TrackingController {
     getTracking(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -23,7 +23,7 @@ class TrackingController {
                     filters.activityId = activityId;
                 if (userStatusId)
                     filters.userStatusId = userStatusId;
-                const trakings = yield trackingBo_1.trackingBo.getTracking(filters);
+                const trakings = yield trackingsBo_1.trackingBo.getTracking(filters);
                 res.status(200).json({ results: trakings });
             }
             catch (error) {
@@ -39,7 +39,7 @@ class TrackingController {
                     activityId: req.body.activityId,
                     userStatusId: req.body.userStatusId,
                 };
-                const tracking = yield trackingBo_1.trackingBo.postTracking(data);
+                const tracking = yield trackingsBo_1.trackingBo.postTracking(data);
                 res.status(201).json({ results: tracking });
             }
             catch (error) {
@@ -55,7 +55,18 @@ class TrackingController {
                     activityId: req.body.activityId,
                     userStatusId: req.body.userStatusId,
                 };
-                const tracking = yield trackingBo_1.trackingBo.updateTracking(req.params.id, data);
+                const tracking = yield trackingsBo_1.trackingBo.updateTracking(req.params.id, data);
+                res.status(200).json({ results: tracking });
+            }
+            catch (error) {
+                next(error);
+            }
+        });
+    }
+    deleteTracking(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const tracking = yield trackingsBo_1.trackingBo.deleteTracking(req.params.id);
                 res.status(200).json({ results: tracking });
             }
             catch (error) {

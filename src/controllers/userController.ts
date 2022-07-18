@@ -2,7 +2,7 @@
 
 import { Request, Response, NextFunction } from 'express';
 import { User } from '../models/User';
-import { userBo } from '../bos/userBo';
+import { userBo } from '../bos/usersBo';
 
 class UserController {
   public async getUser(

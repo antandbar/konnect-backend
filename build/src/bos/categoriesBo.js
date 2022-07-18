@@ -8,32 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.locationController = void 0;
-const locationsBo_1 = require("../bos/locationsBo");
-class LocationController {
-    getLocation(req, res, next) {
+exports.categoryBo = void 0;
+const Category_1 = __importDefault(require("../models/Category"));
+class CategoryBo {
+    getCategory() {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const location = yield locationsBo_1.locationBo.getLocation();
-                res.status(200).json({ results: location });
-            }
-            catch (error) {
-                next(error);
-            }
+            const topics = yield Category_1.default.findAll();
+            return topics;
         });
     }
-    postLocation(req, res, next) {
+    postCategory(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const data = req.body;
-                const location = yield locationsBo_1.locationBo.postLocation(data);
-                res.status(201).json({ results: location });
-            }
-            catch (error) {
-                next(error);
-            }
+            const category = yield Category_1.default.create(data);
+            return category;
         });
     }
 }
-exports.locationController = new LocationController();
+exports.categoryBo = new CategoryBo();

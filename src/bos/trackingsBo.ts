@@ -39,6 +39,16 @@ class TrackingBo {
 
     return tracking;
   }
+
+  public async deleteTracking(id: any): Promise<Tracking[]> {
+    const tracking: any = await TrackingSchema.destroy({
+      where: {
+        id: id,
+      },
+    });
+
+    return tracking;
+  }
 }
 
 export const trackingBo = new TrackingBo();

@@ -13,12 +13,13 @@ import Associations from './models/Associations';
 
 // Routes
 import ActivitiesRoutes from './routes/activities';
-import CategoryRoutes from './routes/category';
+import CategoryRoutes from './routes/categories';
 import CommentRoutes from './routes/comments';
-import TrakingRoutes from './routes/tracking';
-import LocationRoutes from './routes/location';
+import TrakingRoutes from './routes/trackings';
+import LocationRoutes from './routes/locations';
 import UserRoutes from './routes/user';
 import UserStatusRoutes from './routes/user-status'; 
+import countRoutes from './routes/counts'; 
 
 // Inicializaciones
 const app = express();
@@ -48,9 +49,8 @@ app.use('/apiv1/tracking', TrakingRoutes);
 app.use('/apiv1/location', LocationRoutes);
 app.use('/apiv1/user-status', UserStatusRoutes);
 app.use('/apiv1/user', UserRoutes);
+app.use('/apiv1/count', countRoutes);
 
-
-// Prueba de rama develop
 
 // Estaticos
 app.use(express.static(path.join(__dirname, 'public')));

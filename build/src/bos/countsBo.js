@@ -8,32 +8,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.locationController = void 0;
-const locationsBo_1 = require("../bos/locationsBo");
-class LocationController {
-    getLocation(req, res, next) {
+exports.countsBo = void 0;
+const Tracking_1 = __importDefault(require("../models/Tracking"));
+class CountsBo {
+    getCountSignedup() {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const location = yield locationsBo_1.locationBo.getLocation();
-                res.status(200).json({ results: location });
-            }
-            catch (error) {
-                next(error);
-            }
+            const trackings = yield Tracking_1.default.count({
+                where: { userStatusId: 2 }
+            });
+            return trackings;
         });
     }
-    postLocation(req, res, next) {
+    getCountInterested() {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const data = req.body;
-                const location = yield locationsBo_1.locationBo.postLocation(data);
-                res.status(201).json({ results: location });
-            }
-            catch (error) {
-                next(error);
-            }
+            const trackings = yield Tracking_1.default.count({
+                where: { userStatusId: 3 }
+            });
+            return trackings;
         });
     }
 }
-exports.locationController = new LocationController();
+exports.countsBo = new CountsBo();

@@ -9,26 +9,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.locationController = void 0;
-const locationsBo_1 = require("../bos/locationsBo");
-class LocationController {
-    getLocation(req, res, next) {
+exports.countsController = void 0;
+const countsBo_1 = require("../bos/countsBo");
+class CountsController {
+    getCountSignedup(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const location = yield locationsBo_1.locationBo.getLocation();
-                res.status(200).json({ results: location });
+                const counts = yield countsBo_1.countsBo.getCountSignedup();
+                res.status(200).json({ result: counts });
             }
             catch (error) {
                 next(error);
             }
         });
     }
-    postLocation(req, res, next) {
+    getCountInterested(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const data = req.body;
-                const location = yield locationsBo_1.locationBo.postLocation(data);
-                res.status(201).json({ results: location });
+                const counts = yield countsBo_1.countsBo.getCountInterested();
+                res.status(200).json({ result: counts });
             }
             catch (error) {
                 next(error);
@@ -36,4 +35,4 @@ class LocationController {
         });
     }
 }
-exports.locationController = new LocationController();
+exports.countsController = new CountsController();

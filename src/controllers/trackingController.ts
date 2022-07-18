@@ -2,7 +2,7 @@
 
 import { Request, Response, NextFunction } from 'express';
 import { Tracking } from '../models/Tracking';
-import { trackingBo } from '../bos/trackingBo';
+import { trackingBo } from '../bos/trackingsBo';
 
 class TrackingController {
   public async getTracking(
@@ -56,7 +56,24 @@ class TrackingController {
         userStatusId: req.body.userStatusId,
       };
 
-      const tracking: Tracking[] = await trackingBo.updateTracking(req.params.id,data);
+      const tracking: Tracking[] = await trackingBo.updateTracking(
+        req.params.id,
+        data,
+      );
+      res.status(200).json({ results: tracking });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public async deleteTracking(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const tracking: any = await trackingBo.deleteTracking(req.params.id);
+
       res.status(200).json({ results: tracking });
     } catch (error) {
       next(error);

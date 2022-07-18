@@ -10,12 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userController = void 0;
-const userBo_1 = require("../bos/userBo");
+const usersBo_1 = require("../bos/usersBo");
 class UserController {
     getUser(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const location = yield userBo_1.userBo.getUser();
+                const location = yield usersBo_1.userBo.getUser();
                 res.status(200).json({ results: location });
             }
             catch (error) {
@@ -26,7 +26,7 @@ class UserController {
     getUserDetail(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const location = yield userBo_1.userBo.getUserDetail(req.params.id);
+                const location = yield usersBo_1.userBo.getUserDetail(req.params.id);
                 res.status(200).json({ results: location });
             }
             catch (error) {
@@ -47,7 +47,7 @@ class UserController {
                     gender: req.body.gender,
                     bio: req.body.bio,
                 };
-                const location = yield userBo_1.userBo.postUser(data);
+                const location = yield usersBo_1.userBo.postUser(data);
                 res.status(201).json({ results: location });
             }
             catch (error) {

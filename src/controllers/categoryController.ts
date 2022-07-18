@@ -2,7 +2,7 @@
 
 import { Request, Response, NextFunction } from 'express';
 import { Category } from '../models/Category';
-import { categoryBo } from '../bos/categoryBo';
+import { categoryBo } from '../bos/categoriesBo';
 
 class CategoryController {
   public async getCategory(

@@ -12,9 +12,7 @@ import Associations from './models/Associations';
 
 
 // Routes
-import SearchEnginesRoutes from './routes/searchEngines';
 import ActivitiesRoutes from './routes/activities';
-import SearchRoutes from './routes/search';
 import CategoryRoutes from './routes/category';
 import CommentRoutes from './routes/comments';
 import TrakingRoutes from './routes/tracking';
@@ -43,9 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-app.use('/apiv1/searchengines', SearchEnginesRoutes);
 app.use('/apiv1/activities', ActivitiesRoutes);
-app.use('/apiv1/search', SearchRoutes);
 app.use('/apiv1/category', CategoryRoutes);
 app.use('/apiv1/comments', CommentRoutes);
 app.use('/apiv1/tracking', TrakingRoutes);

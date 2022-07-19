@@ -52,7 +52,7 @@ class ActivitiessBo {
     return activity;
   }
 
-  public async deleteActivities(id: any): Promise<Activity[]> {
+  public async deleteActivities(id: any): Promise<Activity> {
     const activity: any = await ActivitySchema.destroy({
       where: {
         id: id,

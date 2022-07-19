@@ -63,6 +63,20 @@ class UserController {
       next(error);
     }
   }
+
+  public async deleteUser(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const user: any = await userBo.deleteUser(req.params.id);
+
+      res.status(200).json({ result: user });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export const userController = new UserController();

@@ -74,7 +74,7 @@ class ActivitiesController {
     try {
       const activity: any = await activitiessBo.deleteActivities(req.params.id);
 
-      res.status(200).json({ results: activity });
+      res.status(200).json({ result: activity });
     } catch (error) {
       next(error);
     }

@@ -51,6 +51,16 @@ class UserBo {
 
     return user;
   }
+
+  public async deleteUser(id: any): Promise<User> {
+    const activity: any = await UserSchema.destroy({
+      where: {
+        id: id,
+      },
+    });
+
+    return activity;
+  }
 }
 
 export const userBo = new UserBo();

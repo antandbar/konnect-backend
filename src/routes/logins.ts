@@ -7,5 +7,4 @@ const router: Router = Router();
 
 router.post('/', loginsController.postJWT);
 
-
 export default router;

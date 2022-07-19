@@ -28,6 +28,7 @@ class TrackingBo {
                 include: [
                     {
                         model: User_1.default,
+                        attributes: { exclude: ['password'] },
                     },
                     {
                         model: Activity_1.default,

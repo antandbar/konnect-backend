@@ -13,26 +13,55 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userBo = void 0;
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const User_1 = __importDefault(require("../models/User"));
 class UserBo {
     getUser() {
         return __awaiter(this, void 0, void 0, function* () {
-            const topics = yield User_1.default.findAll();
+            const topics = yield User_1.default.findAll({ attributes: {
+                    exclude: [
+                        'password',
+                    ],
+                } });
             return topics;
         });
     }
     getUserDetail(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const topics = yield User_1.default.findAll({
-                where: { id: id },
+                where: { id: id }, attributes: {
+                    exclude: [
+                        'password',
+                    ],
+                }
             });
             return topics;
         });
     }
     postUser(userName, name, email, password, birthDate, userLocation, gender, bio) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield User_1.default.create(userName, name, email, password, birthDate, userLocation, gender, bio);
+            const bPassword = yield bcrypt_1.default.hash(password.toString(), 7);
+            const user = yield User_1.default.create({
+                userName: userName,
+                name: name,
+                email: email,
+                password: bPassword,
+                bithDate: birthDate,
+                userLocation: userLocation,
+                gender: gender,
+                bio: bio,
+            });
             return user;
+        });
+    }
+    deleteUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const activity = yield User_1.default.destroy({
+                where: {
+                    id: id,
+                },
+            });
+            return activity;
         });
     }
 }

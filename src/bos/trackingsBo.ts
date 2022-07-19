@@ -15,6 +15,7 @@ class TrackingBo {
       include: [
         {
           model: UserSchema,
+          attributes: { exclude: ['password'] },
         },
         {
           model: ActivitySchema,

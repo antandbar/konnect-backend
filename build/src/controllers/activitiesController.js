@@ -68,7 +68,7 @@ class ActivitiesController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const activity = yield activitiesBo_1.activitiessBo.deleteActivities(req.params.id);
-                res.status(200).json({ results: activity });
+                res.status(200).json({ result: activity });
             }
             catch (error) {
                 next(error);

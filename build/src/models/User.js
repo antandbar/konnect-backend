@@ -24,10 +24,10 @@ UserSchema.init({
         allowNull: false,
     },
     password: {
-        type: sequelize_1.DataTypes.STRING(50),
+        type: sequelize_1.DataTypes.STRING(250),
         allowNull: false,
     },
-    birthDate: {
+    bithDate: {
         type: sequelize_1.DataTypes.DATE,
         allowNull: false,
     },

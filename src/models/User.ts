@@ -49,7 +49,7 @@ UserSchema.init(
       allowNull: false,
     },
     password: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(250),
       allowNull: false,
     },
     bithDate: {

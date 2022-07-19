@@ -1,5 +1,6 @@
 'use strict';
 
+import bcrypt from 'bcrypt';
 import UserSchema, { User } from '../models/User';
 
 class UserBo {
@@ -17,8 +18,28 @@ class UserBo {
     return topics;
   }
 
-  public async postUser(data: any): Promise<User[]> {
-    const user: any = await UserSchema.create(data);
+  public async postUser(
+    userName: string,
+    name: string,
+    email: string,
+    password: string,
+    birthDate: Date,
+    userLocation: string,
+    gender: string,
+    bio: string,
+  ): Promise<User> {
+    const bPassword = await bcrypt.hash(password.toString(), 7);
+
+    const user: any = await UserSchema.create({
+      userName: userName,
+      name: name,
+      email: email,
+      password: bPassword,
+      bithDate: birthDate,
+      userLocation: userLocation,
+      gender: gender,
+      bio: bio,
+    });
 
     return user;
   }

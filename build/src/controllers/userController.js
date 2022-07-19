@@ -37,17 +37,8 @@ class UserController {
     postUser(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const data = {
-                    userName: req.body.userName,
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: req.body.password,
-                    bithDate: req.body.bithDate,
-                    userLocation: req.body.userLocation,
-                    gender: req.body.gender,
-                    bio: req.body.bio,
-                };
-                const location = yield usersBo_1.userBo.postUser(data);
+                const { userName, name, email, password, birthDate, userLocation, gender, bio, } = req.body;
+                const location = yield usersBo_1.userBo.postUser(userName, name, email, password, birthDate, userLocation, gender, bio);
                 res.status(201).json({ results: location });
             }
             catch (error) {

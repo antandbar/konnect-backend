@@ -27,7 +27,7 @@ UserSchema.init({
         type: sequelize_1.DataTypes.STRING(50),
         allowNull: false,
     },
-    bithDate: {
+    birthDate: {
         type: sequelize_1.DataTypes.DATE,
         allowNull: false,
     },

@@ -29,9 +29,9 @@ class UserBo {
             return topics;
         });
     }
-    postUser(data) {
+    postUser(userName, name, email, password, birthDate, userLocation, gender, bio) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield User_1.default.create(data);
+            const user = yield User_1.default.create(userName, name, email, password, birthDate, userLocation, gender, bio);
             return user;
         });
     }

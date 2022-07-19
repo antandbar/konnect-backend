@@ -37,18 +37,28 @@ class UserController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const data: object = {
-        userName: req.body.userName,
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-        bithDate: req.body.bithDate,
-        userLocation: req.body.userLocation,
-        gender: req.body.gender,
-        bio: req.body.bio,
-      };
-      const location: User[] = await userBo.postUser(data);
-      res.status(201).json({ results: location });
+      const {
+        userName,
+        name,
+        email,
+        password,
+        birthDate,
+        userLocation,
+        gender,
+        bio,
+      } = req.body;
+
+      const user: User = await userBo.postUser(
+        userName,
+        name,
+        email,
+        password,
+        birthDate,
+        userLocation,
+        gender,
+        bio
+      );
+      res.status(201).json({ results: user });
     } catch (error) {
       next(error);
     }

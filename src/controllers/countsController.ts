@@ -11,7 +11,7 @@ class CountsController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const counts: Tracking = await countsBo.getCountSignedup(req.params.id);
+      const counts: Tracking = await countsBo.getCountSignedup(req.params.userId);
       res.status(200).json({ result: counts });
     } catch (error) {
       next(error);
@@ -24,7 +24,7 @@ class CountsController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const counts: Tracking = await countsBo.getCountInterested(req.params.id);
+      const counts: Tracking = await countsBo.getCountInterested(req.params.userId);
       res.status(200).json({ result: counts });
     } catch (error) {
       next(error);

@@ -3,17 +3,17 @@
 import TrackingSchema, { Tracking } from '../models/Tracking';
 
 class CountsBo {
-  public async getCountSignedup(id:any): Promise<Tracking> {
+  public async getCountSignedup(userId:any): Promise<Tracking> {
     const trackings: any = await TrackingSchema.count({
-      where: {  userStatusId: 2, userId: id }
+      where: {  userStatusId: 2, userId: userId }
     });
 
     return trackings;
   }
 
-  public async getCountInterested(id:any): Promise<Tracking> {
+  public async getCountInterested(userId:any): Promise<Tracking> {
     const trackings: any = await TrackingSchema.count({
-      where: {  userStatusId: 3, userId: id }
+      where: {  userStatusId: 3, userId: userId }
     });
 
     return trackings;

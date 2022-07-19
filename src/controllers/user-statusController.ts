@@ -33,14 +33,6 @@ class UserStatusController {
     }
   }
 
-  /*   public async putUserStatus(req: Request, res: Response): Promise<void> {
-    const data: object = {
-      statusDescription: req.body.statusDescription,
-    }
-    const userStatus: UserStatus[] = await userStatusBo.putUserStatus(req.params, data);
-    res.status(200).json({ results: userStatus });
-  } */
-
   public async deleteUserStatus(
     req: Request,
     res: Response,

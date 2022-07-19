@@ -9,8 +9,6 @@ router.get('/', userController.getUser);
 router.get('/:id', userController.getUserDetail);
 
 router.post('/', userController.postUser);
-//router.put('/:id', userController.putUser);
-//router.delete('/:id', userController.deleteUser);
 
 
 

@@ -6,7 +6,7 @@ import jwtAuth from '../lib/jwtAuth';
 
 const router: Router = Router();
 
-router.get('/signedup/:userId', jwtAuth, countsController.getCountSignedup);
-router.get('/interested/:userId', jwtAuth, countsController.getCountInterested);
+router.get('/signedup/:activityId', jwtAuth, countsController.getCountSignedup);
+router.get('/interested/:activityId', jwtAuth, countsController.getCountInterested);
 
 export default router;

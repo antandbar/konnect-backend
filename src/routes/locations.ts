@@ -1,7 +1,7 @@
 'use strict';
 
 import { Router } from 'express';
-import { locationController } from '../controllers/locationController';
+import { locationController } from '../controllers/locationsController';
 
 const router: Router = Router();
 

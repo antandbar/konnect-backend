@@ -1,7 +1,7 @@
 'use strict';
 
 import { Router } from 'express';
-import { trackingController } from '../controllers/trackingController';
+import { trackingController } from '../controllers/trackingsController';
 
 const router: Router = Router();
 

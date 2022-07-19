@@ -1,7 +1,7 @@
 'use strict';
 
 import { Router } from 'express';
-import { categoryController } from '../controllers/categoryController';
+import { categoryController } from '../controllers/categoriesController';
 
 const router: Router = Router();
 

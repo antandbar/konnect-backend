@@ -20,6 +20,7 @@ import LocationRoutes from './routes/locations';
 import UserRoutes from './routes/user';
 import UserStatusRoutes from './routes/user-status'; 
 import countRoutes from './routes/counts'; 
+import loginsRoutes from './routes/logins'; 
 
 // Inicializaciones
 const app = express();
@@ -50,6 +51,7 @@ app.use('/apiv1/location', LocationRoutes);
 app.use('/apiv1/user-status', UserStatusRoutes);
 app.use('/apiv1/user', UserRoutes);
 app.use('/apiv1/count', countRoutes);
+app.use('/apiv1/login', loginsRoutes);
 
 
 // Estaticos

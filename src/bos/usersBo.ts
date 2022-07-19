@@ -5,14 +5,22 @@ import UserSchema, { User } from '../models/User';
 
 class UserBo {
   public async getUser(): Promise<User[]> {
-    const topics: User[] = await UserSchema.findAll();
+    const topics: User[] = await UserSchema.findAll({attributes: {
+      exclude: [
+        'password',
+      ],
+    }});
 
     return topics;
   }
 
   public async getUserDetail(id: any): Promise<User[]> {
     const topics: User[] = await UserSchema.findAll({
-      where: { id: id },
+      where: { id: id }, attributes: {
+        exclude: [
+          'password',
+        ],
+      }
     });
 
     return topics;

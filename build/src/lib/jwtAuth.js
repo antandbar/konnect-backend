@@ -12,6 +12,7 @@ module.exports = (req, res, next) => {
         return;
     }
     const jwtToken = authHeader.split(' ')[1];
+    // Se verifica token
     jsonwebtoken_1.default.verify(jwtToken, process.env.JWT_SECRET, (err, payload) => {
         if (err) {
             const error = new Error('invalid token');

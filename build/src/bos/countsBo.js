@@ -14,19 +14,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.countsBo = void 0;
 const Tracking_1 = __importDefault(require("../models/Tracking"));
+// Se utilizan counts
 class CountsBo {
-    getCountSignedup() {
+    getCountSignedup(userId) {
         return __awaiter(this, void 0, void 0, function* () {
             const trackings = yield Tracking_1.default.count({
-                where: { userStatusId: 2 }
+                where: { userStatusId: 2, userId: userId }
             });
             return trackings;
         });
     }
-    getCountInterested() {
+    getCountInterested(userId) {
         return __awaiter(this, void 0, void 0, function* () {
             const trackings = yield Tracking_1.default.count({
-                where: { userStatusId: 3 }
+                where: { userStatusId: 3, userId: userId }
             });
             return trackings;
         });

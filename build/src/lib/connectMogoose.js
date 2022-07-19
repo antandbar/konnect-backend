@@ -24,10 +24,7 @@ const dbMongodbConnection = () => {
     mongoose_1.default.connection.once('open', () => __awaiter(void 0, void 0, void 0, function* () {
         console.log('Conectado a MongoDB en la BD:', mongoose_1.default.connection.name);
     }));
-    /*   mongoose.connect((process.env.URI!), {
-        useNewUrlParser: true,
-      } as mongoose.ConnectOptions);
-    }; */
+    // conexión a la BBDD según dev o prod
     mongoose_1.default.connect(process.env.NODE_ENV === 'development'
         ? process.env.URI_LOCAL
         : process.env.URI, {

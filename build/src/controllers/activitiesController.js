@@ -16,6 +16,7 @@ class ActivitiesController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { categoryId, locationId, activityDate } = req.query;
+                // Se guarda en filtro si llegan en req.query
                 const filters = {};
                 if (categoryId)
                     filters.categoryId = categoryId;

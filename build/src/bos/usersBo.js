@@ -40,6 +40,7 @@ class UserBo {
     }
     postUser(userName, name, email, password, birthDate, userLocation, gender, bio) {
         return __awaiter(this, void 0, void 0, function* () {
+            // Se guarda contraseña encriptada
             const bPassword = yield bcrypt_1.default.hash(password.toString(), 7);
             const user = yield User_1.default.create({
                 userName: userName,

@@ -32,6 +32,7 @@ class LoginsBo {
                     ],
                 },
             });
+            // Se comparan contraseñas
             if (!user ||
                 !(yield bcrypt_1.default.compare(password.toString(), user.dataValues.password))) {
                 const err = new Error('Invalid credentials');

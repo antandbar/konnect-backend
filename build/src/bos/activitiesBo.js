@@ -19,6 +19,7 @@ const Category_1 = __importDefault(require("../models/Category"));
 class ActivitiessBo {
     getActivities(filters) {
         return __awaiter(this, void 0, void 0, function* () {
+            // Se utilizan filtros para filtrar las actividades
             const activities = yield Activity_1.default.findAll({
                 where: filters,
                 attributes: {

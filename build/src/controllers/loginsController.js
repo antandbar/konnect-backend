@@ -21,6 +21,7 @@ class LoginsController {
             try {
                 const { email, password } = req.body;
                 const user = yield loginsBo_1.loginsBo.postJWT(email, password);
+                // Se genera token
                 jsonwebtoken_1.default.sign({ id: user.dataValues.id }, process.env.JWT_SECRET, {
                     expiresIn: '2d',
                 }, (err, jwtToken) => {

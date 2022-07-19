@@ -18,6 +18,7 @@ const User_1 = __importDefault(require("../models/User"));
 const Activity_1 = __importDefault(require("../models/Activity"));
 const UserStatus_1 = __importDefault(require("../models/UserStatus"));
 class TrackingBo {
+    // Se utilizan filtros para filtrar los trakings
     getTracking(filters) {
         return __awaiter(this, void 0, void 0, function* () {
             const topics = yield Tracking_1.default.findAll({

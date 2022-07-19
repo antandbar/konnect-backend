@@ -16,6 +16,7 @@ class TrackingController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { userId, activityId, userStatusId } = req.query;
+                // Se guarda en filtro si llegan en req.query
                 const filters = {};
                 if (userId)
                     filters.userId = userId;

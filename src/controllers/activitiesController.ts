@@ -13,6 +13,7 @@ class ActivitiesController {
     try {
       const { categoryId, locationId, activityDate } = req.query;
 
+      // Se guarda en filtro si llegan en req.query
       const filters: any = {};
 
       if (categoryId) filters.categoryId = categoryId;

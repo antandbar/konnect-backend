@@ -19,16 +19,10 @@ const dbPostgresqlConnection = async (): Promise<void> => {
     console.log('Database postgresql online');
 
     // Se sincroniza el modelo
-    await db.sync({alter: true});
-    
+    await db.sync({ alter: true });
   } catch (error: any) {
     throw new Error(error);
   }
 };
 
-export  {
-  db,
-  dbPostgresqlConnection,
-};
-
-
+export { db, dbPostgresqlConnection };

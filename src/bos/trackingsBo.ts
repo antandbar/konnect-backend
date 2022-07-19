@@ -6,6 +6,8 @@ import ActivitySchema from '../models/Activity';
 import userStatusSchema from '../models/UserStatus';
 
 class TrackingBo {
+  
+  // Se utilizan filtros para filtrar los trakings
   public async getTracking(filters: any): Promise<Tracking[]> {
     const topics: Tracking[] = await TrackingSchema.findAll({
       where: filters,

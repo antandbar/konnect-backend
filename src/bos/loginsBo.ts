@@ -24,6 +24,7 @@ class LoginsBo {
       },
     });
 
+    // Se comparan contraseñas
     if (
       !user ||
       !(await bcrypt.compare(password.toString(), user.dataValues.password))

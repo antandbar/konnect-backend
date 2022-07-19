@@ -10,26 +10,19 @@ const dbMongodbConnection = () => {
   });
 
   // evento al conectar primea vez la BBDD
-  mongoose.connection.once('open', async() => {
+  mongoose.connection.once('open', async () => {
     console.log('Conectado a MongoDB en la BD:', mongoose.connection.name);
   });
 
-/*   mongoose.connect((process.env.URI!), {
-    useNewUrlParser: true,
-  } as mongoose.ConnectOptions);
-}; */
-
-
-mongoose.connect((process.env.NODE_ENV as string) === 'development'
-? (process.env.URI_LOCAL as string)
-: (process.env.URI as string), {
-  useNewUrlParser: true,
-} as mongoose.ConnectOptions);
-
+  // conexión a la BBDD según dev o prod
+  mongoose.connect(
+    (process.env.NODE_ENV as string) === 'development'
+      ? (process.env.URI_LOCAL as string)
+      : (process.env.URI as string),
+    {
+      useNewUrlParser: true,
+    } as mongoose.ConnectOptions,
+  );
 };
 
-
-
-export  {
-  dbMongodbConnection,
-};
+export { dbMongodbConnection };

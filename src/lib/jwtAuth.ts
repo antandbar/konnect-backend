@@ -19,6 +19,7 @@ export = (req: any, res: Response, next: NextFunction) => {
 
   const jwtToken = authHeader.split(' ')[1];
 
+  // Se verifica token
   jwt.verify(
     jwtToken,
     process.env.JWT_SECRET as string,

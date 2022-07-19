@@ -36,6 +36,8 @@ class UserBo {
     gender: string,
     bio: string,
   ): Promise<User> {
+
+    // Se guarda contraseña encriptada
     const bPassword = await bcrypt.hash(password.toString(), 7);
 
     const user: any = await UserSchema.create({

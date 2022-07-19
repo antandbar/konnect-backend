@@ -14,6 +14,7 @@ class LoginsController {
       const { email, password } = req.body;
       const user: any = await loginsBo.postJWT(email, password);
 
+      // Se genera token
       jwt.sign(
         { id: user.dataValues.id },
         process.env.JWT_SECRET as string,

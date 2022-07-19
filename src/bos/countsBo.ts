@@ -2,6 +2,7 @@
 
 import TrackingSchema, { Tracking } from '../models/Tracking';
 
+// Se utilizan counts
 class CountsBo {
   public async getCountSignedup(userId:any): Promise<Tracking> {
     const trackings: any = await TrackingSchema.count({

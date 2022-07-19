@@ -6,7 +6,7 @@ import CategorySchema from '../models/Category';
 
 class ActivitiessBo {
   public async getActivities(filters:any): Promise<Activity[]> {
-
+    // Se utilizan filtros para filtrar las actividades
     const activities: Activity[] = await ActivitySchema.findAll({
       where: filters,
       attributes: {

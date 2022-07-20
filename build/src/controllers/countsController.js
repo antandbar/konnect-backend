@@ -15,7 +15,7 @@ class CountsController {
     getCountSignedup(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const counts = yield countsBo_1.countsBo.getCountSignedup(req.params.userId);
+                const counts = yield countsBo_1.countsBo.getCountSignedup(req.params.activityId);
                 res.status(200).json({ result: counts });
             }
             catch (error) {
@@ -26,7 +26,7 @@ class CountsController {
     getCountInterested(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const counts = yield countsBo_1.countsBo.getCountInterested(req.params.userId);
+                const counts = yield countsBo_1.countsBo.getCountInterested(req.params.activityId);
                 res.status(200).json({ result: counts });
             }
             catch (error) {

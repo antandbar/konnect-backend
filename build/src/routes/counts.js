@@ -7,6 +7,6 @@ const express_1 = require("express");
 const countsController_1 = require("../controllers/countsController");
 const jwtAuth_1 = __importDefault(require("../lib/jwtAuth"));
 const router = (0, express_1.Router)();
-router.get('/signedup/:userId', jwtAuth_1.default, countsController_1.countsController.getCountSignedup);
-router.get('/interested/:userId', jwtAuth_1.default, countsController_1.countsController.getCountInterested);
+router.get('/signedup/:activityId', jwtAuth_1.default, countsController_1.countsController.getCountSignedup);
+router.get('/interested/:activityId', jwtAuth_1.default, countsController_1.countsController.getCountInterested);
 exports.default = router;

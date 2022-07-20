@@ -16,18 +16,18 @@ exports.countsBo = void 0;
 const Tracking_1 = __importDefault(require("../models/Tracking"));
 // Se utilizan counts
 class CountsBo {
-    getCountSignedup(userId) {
+    getCountSignedup(activityId) {
         return __awaiter(this, void 0, void 0, function* () {
             const trackings = yield Tracking_1.default.count({
-                where: { userStatusId: 2, userId: userId }
+                where: { userStatusId: 2, activityId: activityId }
             });
             return trackings;
         });
     }
-    getCountInterested(userId) {
+    getCountInterested(activityId) {
         return __awaiter(this, void 0, void 0, function* () {
             const trackings = yield Tracking_1.default.count({
-                where: { userStatusId: 3, userId: userId }
+                where: { userStatusId: 3, activityId: activityId }
             });
             return trackings;
         });

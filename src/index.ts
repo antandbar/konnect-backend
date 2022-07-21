@@ -45,7 +45,6 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 app.use('/apiv1/activities', ActivitiesRoutes);
 app.use('/apiv1/category', CategoryRoutes);
-app.use('/apiv1/comments', CommentRoutes);
 app.use('/apiv1/tracking', TrakingRoutes);
 app.use('/apiv1/location', LocationRoutes);
 app.use('/apiv1/user-status', UserStatusRoutes);

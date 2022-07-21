@@ -15,7 +15,6 @@ const Associations_1 = __importDefault(require("./models/Associations"));
 // Routes
 const activities_1 = __importDefault(require("./routes/activities"));
 const categories_1 = __importDefault(require("./routes/categories"));
-const comments_1 = __importDefault(require("./routes/comments"));
 const trackings_1 = __importDefault(require("./routes/trackings"));
 const locations_1 = __importDefault(require("./routes/locations"));
 const user_1 = __importDefault(require("./routes/user"));
@@ -39,7 +38,6 @@ app.use(express_1.default.urlencoded({ extended: false }));
 // Routes
 app.use('/apiv1/activities', activities_1.default);
 app.use('/apiv1/category', categories_1.default);
-app.use('/apiv1/comments', comments_1.default);
 app.use('/apiv1/tracking', trackings_1.default);
 app.use('/apiv1/location', locations_1.default);
 app.use('/apiv1/user-status', user_status_1.default);

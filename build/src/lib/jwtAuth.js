@@ -21,6 +21,8 @@ module.exports = (req, res, next) => {
             return;
         }
         req.userId = payload.id;
+        req.userName = payload.userName;
+        req.email = payload.email;
         next();
     });
 };

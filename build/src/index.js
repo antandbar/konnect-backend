@@ -21,6 +21,7 @@ const user_1 = __importDefault(require("./routes/user"));
 const user_status_1 = __importDefault(require("./routes/user-status"));
 const counts_1 = __importDefault(require("./routes/counts"));
 const logins_1 = __importDefault(require("./routes/logins"));
+const credentials_1 = __importDefault(require("./routes/credentials"));
 // Inicializaciones
 const app = (0, express_1.default)();
 (0, connectMogoose_1.dbMongodbConnection)();
@@ -44,6 +45,7 @@ app.use('/apiv1/user-status', user_status_1.default);
 app.use('/apiv1/user', user_1.default);
 app.use('/apiv1/count', counts_1.default);
 app.use('/apiv1/login', logins_1.default);
+app.use('/apiv1/credential', credentials_1.default);
 // Estaticos
 app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
 // Arrancar el servidor

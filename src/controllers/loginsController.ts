@@ -16,7 +16,7 @@ class LoginsController {
 
       // Se genera token
       jwt.sign(
-        { id: user.dataValues.id },
+        { id: user.dataValues.id, userName: user.dataValues.userName, email: user.dataValues.email },
         process.env.JWT_SECRET as string,
         {
           expiresIn: '2d',

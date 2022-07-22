@@ -14,13 +14,13 @@ import Associations from './models/Associations';
 // Routes
 import ActivitiesRoutes from './routes/activities';
 import CategoryRoutes from './routes/categories';
-import CommentRoutes from './routes/comments';
 import TrakingRoutes from './routes/trackings';
 import LocationRoutes from './routes/locations';
 import UserRoutes from './routes/user';
 import UserStatusRoutes from './routes/user-status'; 
 import countRoutes from './routes/counts'; 
 import loginsRoutes from './routes/logins'; 
+import credentialsRoutes from './routes/credentials';
 
 // Inicializaciones
 const app = express();
@@ -51,6 +51,7 @@ app.use('/apiv1/user-status', UserStatusRoutes);
 app.use('/apiv1/user', UserRoutes);
 app.use('/apiv1/count', countRoutes);
 app.use('/apiv1/login', loginsRoutes);
+app.use('/apiv1/credential', credentialsRoutes);
 
 
 // Estaticos

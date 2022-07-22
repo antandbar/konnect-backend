@@ -31,6 +31,8 @@ export = (req: any, res: Response, next: NextFunction) => {
         return;
       }
       req.userId = payload.id;
+      req.userName = payload.userName;
+      req.email = payload.email;
 
       next();
     },

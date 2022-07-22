@@ -13,9 +13,7 @@ class LoginsBo {
       where: { email: email },
       attributes: {
         exclude: [
-          'userName',
           'name',
-          'email',
           'bithDate',
           'userLocation',
           'gender',

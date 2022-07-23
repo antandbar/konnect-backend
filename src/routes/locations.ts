@@ -6,7 +6,7 @@ import jwtAuth from '../lib/jwtAuth';
 
 const router: Router = Router();
 
-router.get('/', jwtAuth, locationController.getLocation);
+router.get('/', locationController.getLocation);
 router.post('/', jwtAuth, locationController.postLocation);
 
 export default router;

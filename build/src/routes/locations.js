@@ -7,6 +7,6 @@ const express_1 = require("express");
 const locationsController_1 = require("../controllers/locationsController");
 const jwtAuth_1 = __importDefault(require("../lib/jwtAuth"));
 const router = (0, express_1.Router)();
-router.get('/', jwtAuth_1.default, locationsController_1.locationController.getLocation);
+router.get('/', locationsController_1.locationController.getLocation);
 router.post('/', jwtAuth_1.default, locationsController_1.locationController.postLocation);
 exports.default = router;

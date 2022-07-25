@@ -1,4 +1,4 @@
-# My favorite groups
+# Konnect Backend
 
 
 To start the application use:
